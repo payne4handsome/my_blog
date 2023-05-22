@@ -17,8 +17,6 @@ author: "pan"
 #     relative: false
 ---
 
-# mysql innodb中的四种事务隔离级别
-
 本文以实验的形式展示mysql Innodb引擎的四种事务隔离级别的影响。
 
 ## 四种隔离级别

@@ -3,12 +3,9 @@ layout: post
 title: "LoRA: Low-RanK Adaption Of Large Language Models"
 date: 2023-05-09 21:28:47 +0800
 # menu: main
-categories: []
-tags: [mysql, 事务, 隔离级别]
-author: "pan"
+categories: [paper]
+tags: [lora, llm]
 ---
-
-# LoRA: Low-RanK Adaption Of Large Language Models
 
 1. Title: LoRA: 大语言模型的低秩适配
 2. 作者: {edwardhu, yeshe, phwallis, zeyuana, yuanzhil, swang, luw, wzchen}@microsoft.com yuanzhil@andrew.cmu.edu
@@ -17,6 +14,13 @@ author: "pan"
 ## 该论文试图解决什么问题？
 
 提出一个大模型的低秩适配方法去解决全量微调大模型时候需要全量更新模型参数、显存占用很大的问题。
+
+## Key Contributions
+
+1. 对于不同的下游任务，大模型的参数是共享的，变化的只不过是LoRA方法新引入的参数（即B、A参数矩阵）。所以如果有比较多的下游任务，大模型参数只需要保存一份，切换任务的时候也只需要切换一下B、A矩阵即可。大大减少了模型存储的空间和任务切换时候的负载
+2. LoRA方法可以使训练更有效（耗时减少）、减少**3倍**的显存使用。因为不用保存原始大模型参数的梯度。eg，GPT-3训练需要1.2T显存，使用LoRA方法显存只需要350G左右
+3. 不增加推理耗时（上面已经提到）
+4. 可以和其他的适配方法结合，比如prefix-tuning
 
 ## Abstract & Introduction & Method
 
@@ -33,13 +37,6 @@ $$h = W_0x$$, 修改后的前向过程如下：
 $$h = W_0x+\Delta Wx=W_ox+BAx$$
 
 LoRA核心的方法就是改公式。在模型保存的时候可以将$W_0+\Delta W$保存（即加起来），所以改方法不会增加模型的推理耗时
-
-## Key Contributions
-
-1. 对于不同的下游任务，大模型的参数是共享的，变化的只不过是LoRA方法新引入的参数（即B、A参数矩阵）。所以如果有比较多的下游任务，大模型参数只需要保存一份，切换任务的时候也只需要切换一下B、A矩阵即可。大大减少了模型存储的空间和任务切换时候的负载
-2. LoRA方法可以使训练更有效（耗时减少）、减少**3倍**的显存使用。因为不用保存原始大模型参数的梯度。eg，GPT-3训练需要1.2T显存，使用LoRA方法显存只需要350G左右
-3. 不增加推理耗时（上面已经提到）
-4. 可以和其他的适配方法结合，比如prefix-tuning
 
 ## Experiments
 
