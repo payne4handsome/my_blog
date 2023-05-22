@@ -24,7 +24,7 @@ NLP模型使用的一个通用范式是先选择一个大的在通用数据集�
 
 + 方法示意图如下
 
-![lora示意图](/lora/lora-1.png)
+![lora示意图](/papers_lora/lora-1.png)
 
 右边橙色的为新引入的可训练的低秩矩阵，其它的为原始模型的参数。数学表达可能更清楚一点。原始模型的前向过程表达为
 
@@ -44,20 +44,20 @@ LoRA核心的方法就是改公式。在模型保存的时候可以将$W_0+\Delt
 ## Experiments
 
 1. 与不同适配方法在GLUE上的对比
-![实验一](/lora/lora-2.png)
+![实验一](/papers_lora/lora-2.png)
 
 2. 在GPT-3上的适配效果对比
-![实验二](/lora/lora-3.png)
+![实验二](/papers_lora/lora-3.png)
 
 3. 不同方法加大可训练参数量效果对比
-![实验三](/lora/lora-4.png)
+![实验三](/papers_lora/lora-4.png)
 
 4. Transformer结构为例，LoRA加到哪里更有效？
-![实验四](/lora/lora-5.png)
+![实验四](/papers_lora/lora-5.png)
 **参数总量不变（秩r改变），加的地方不一样。实验表明加到$W_q$,$W_v$上效果更好**
 
 5. r是不是越大越好？
-![实验四](/lora/lora-6.png)
+![实验四](/papers_lora/lora-6.png)
 实验表明，r并不是越大效果越好，对于一些任务，r=4就足够了（取1效果也不错）。对于这个结论论文有一些说明，大致的意思就是r=4的时候，参数量已经够要学习的信息了，再打也是无非是引入冗余的信息罢了。这里解析的可以有失偏颇，感兴趣的参见原文为好。
 
 ## CONCLUSION AND FUTURE WORK

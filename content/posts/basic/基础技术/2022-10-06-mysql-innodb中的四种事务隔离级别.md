@@ -35,10 +35,10 @@ author: "pan"
 ## 详细说明
 > 以下表（test）解释各个隔离级别，只有两个字段，一个id，一个account
 
-![image.png](/2022-10-06-mysql-innodb中的四种事务隔离级别/8596800-048285446d7c9fa6.png)
+![image.png](/mysql_transaction/8596800-048285446d7c9fa6.png)
 
 插入测试数据
-![image.png](/2022-10-06-mysql-innodb中的四种事务隔离级别/8596800-530cc6e63eeb0cfe.png)
+![image.png](/mysql_transaction/8596800-530cc6e63eeb0cfe.png)
 关闭mysql自动提交和设置隔离级别
 + 查看是否开启自动提交
 ```
