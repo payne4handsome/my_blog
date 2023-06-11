@@ -5,6 +5,11 @@ date: 2023-3-20
 # menu: main
 categories: [机器学习]
 tags: [VAE]
+# cover:
+#     image : '/cover.jpeg'
+#     alt: "<alt text>"
+#     caption: "<text>"
+#     relative: false
 ---
 
 # Vanilla VAE(Variational Autoencoder)
