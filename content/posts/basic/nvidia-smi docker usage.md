@@ -8,15 +8,6 @@ tags: [docker]
 author: "pan"
 ---
 
-<!-- ---
-layout: post
-title: "matplotlib画图"
-date: 2021-12-19
-categories: 
-    - "python"
-tags: [matplotlib]
-author: "pan"
---- -->
 
 # 正文
 

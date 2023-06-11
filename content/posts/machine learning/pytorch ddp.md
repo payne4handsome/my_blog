@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "pytorch ddp"
-date: 2023-05-09 21:28:47 +0800
+date: 2021-09-15
 # menu: main
 categories: [机器学习]
 tags: [pytorch, ddp]

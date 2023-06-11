@@ -132,7 +132,7 @@ params:
               url: tags
 
     homeInfoParams:
-        Title: "Pan Blog"
+        Title: "Pan'Blog"
         Content: >
             Welcome to pan's blog.
 

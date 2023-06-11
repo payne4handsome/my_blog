@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "深度学习中的各种tricks"
-date: 2023-05-09 21:28:47 +0800
+date: 2022-04-27
 # menu: main
 categories: [机器学习]
 tags: [tricks]

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "YOLOv4学习摘要"
-date: 2023-05-09 21:28:47 +0800
+date: 2022-09-27
 # menu: main
 categories: [机器学习]
 tags: [yolov4, yolo, '目标检测']
