@@ -141,9 +141,9 @@ params:
             - Do give a 🌟 on Github !
 
 
-    socialIcons:
-        - name: github
-          url: "https://github.com/payne4handsome"
+    # socialIcons:
+    #     - name: github
+    #       url: "https://github.com/payne4handsome"
 
     # editPost:
     #     URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
