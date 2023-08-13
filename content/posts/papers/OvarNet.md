@@ -1,9 +1,9 @@
 ---
-title: "OvarNet"
+title: "OvarNet:Towards Open-vocabulary Object Attribute Recognition"
 date: 2023-07-10T15:30:40+08:00
-draft: False
-categories: []
-tags: []
+draft: True
+categories: ["paper"]
+tags: ["Open Vocabulary", "OvarNet", "Attribute Recognition"]
 author: pan
 ---
 
