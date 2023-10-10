@@ -1,0 +1,71 @@
+---
+title: "Flamingo"
+date: 2023-09-24T17:40:40+08:00
+draft: False
+categories: [paper]
+tags: []
+author: pan
+---
+1. Title: Flamingo: a Visual Language Model for Few-Shot Learning
+2. 作者: Jean-Baptiste Alayrac, Jeff Donahue
+3. 发表日期: 2022.11
+
+## 一、Introduction
+
+### 1.1 该论文试图解决什么问题？
+
+多模领域的few-shot问题
+
+### 1.2 Key Contributions
+
+1. 提出Flamingo模型，通过几个示例就可执行各种多模任务。由于架构的创新，Flamingo可以处理随意的图片（可以多张图片）和文本
+2. 通过few-shot学习，定量评估Flamingo是如何迁移到其他各种任务的
+3. 通过few-shot学习，Flamingo在16任务中的6个任务(6个人任务是finetune过的)取到SOTA。Flamingo可以在其他数据集上通过fine-tune取到SOTA。
+
+## Method
+
+Flamingo架构总览如下图
+![Flamingo architecture overview](/papers_Flamingo/Flamingo_1.png)
+从图中可以看到Flamingo架构有两个关键点组件，Perceiver Resampler和Gated XATTN-DENSE
+
+1. Perceiver Resampler: 任意数量的图片或者视频经过视觉模型编码后，再通过Pereiver Resampler输出**固定数量**的visual tokens。注：该模块决定了Flamingo可以处理多张图片的能力（即具有few-shot的能力）
+2. Gated XATTN-DENSE: 主要是指cross attention的基础加入门机制(tanh(a), a初始化为0)，可以提升性能和训练的稳定性
+
+### Visual processing and the Perceiver Resampler
+
+Perceiver Resampler示意图如下，学习DETR的query机制，有几个query，输出就是几个visual token（论文中为5）
+![The Perceiver Resampler](/papers_Flamingo/Flamingo_2.png)
+
+### Conditioning frozen language models on visual representations
+
+在Transformer中的cross attention的基础加入门机制
+![GATED XATTN-DENSE layers](/papers_Flamingo/Flamingo_3.png)
+
+### Multi-visual input support: per-image/video attention masking
+
+网络上爬取的文档是图片和文本交错的信息。该模块是用来控制当前文本token可以注意到的图片（离当前文本token最近的上一个图片）
+
+![Interleaved visual data and text support](/papers_Flamingo/Flamingo_4.png)
+
+### Training on a mixture of vision and language datasets
+
+Flamingo训练采用了三个数据集：
+
+1. M3W: Interleaved image and text dataset
+   4300万，序列长度256（包含5张图片）
+2. image-text pairs: 18亿ALIGN基础上扩充，3.12亿LTIP
+3. video-text pairs: 2700万短视频（平均时长22s）
+
+### Task adaptation with few-shot in-context learning
+
+通过few-shot迁移到其他任务
+
+### Experiments
+
+1. 与SOTA模型比较（即包括zero|few shot模型、也包括finetune过的模型）
+
+![Comparison to the state of the art](/papers_Flamingo/Flamingo_5.png)
+2. Finetune Flamingo(与few shot不如别人finetune的7个任务再次比较)
+![Comparison to the state of the art](/papers_Flamingo/Flamingo_6.png)
+3. 消融实验
+![Comparison to the state of the art](/papers_Flamingo/Flamingo_7.png)

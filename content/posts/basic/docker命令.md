@@ -67,7 +67,12 @@ docker commit -m="has update" -a="runoob" e218edb10161 runoob/ubuntu:v2
 
 ```sh
 docker tag 860c279d2fec runoob/centos:dev
+
+docker login xxxx.com
+
+docker push a/b/c/image_name:v1.0.0
 ```
+
 
 ## GPU 环境安装
 
