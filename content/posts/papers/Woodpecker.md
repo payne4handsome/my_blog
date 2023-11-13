@@ -1,9 +1,9 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
+title: "Woodpecker: Hallucination Correction for Multimodal Large Language Models"
+date: 2023-10-29T15:20:56+08:00
 draft: true
 categories: [paper]
-tags: []
+tags: [MMLM]
 author: pan
 ---
 1. Title:
@@ -15,8 +15,6 @@ author: pan
 ### 1.1 该论文试图解决什么问题？
 
 ### 1.2 Key Contributions
-
-### 介绍中的要点
 
 ## Method
 
