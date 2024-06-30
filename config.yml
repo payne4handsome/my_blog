@@ -136,9 +136,9 @@ params:
         Content: >
             Welcome to pan's blog.
 
-            - Hi, this is **Zhang Pan**. I’m documenting my learning notes in this blog
+            - Hi, this is **Zhang Pan**. I’m documenting my learning notes in this blog.
 
-            - Do give a 🌟 on Github !
+            - Email: payne4handsome@163.com.
 
 
     # socialIcons:
@@ -226,4 +226,3 @@ services:
         disableInlineCSS: true
     twitter:
         disableInlineCSS: true
-
