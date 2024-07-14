@@ -106,6 +106,77 @@ for epoch in range(xxxx):
 
 ```
 
+# 其它细节
+
+## 初始化方式
+
+pytorch分布式训练初始化dist.init_process_group分为如下三种
+
+### Environment variable initialization
+
+默认的初始化方式
+dist.init_process_group(backend, init_method='file:///mnt/nfs/sharedfile',
+                        world_size=4, rank=args.rank)
+
+### TCP initialization
+
+dist.init_process_group(backend, init_method='tcp://10.1.1.20:23456',
+                        rank=args.rank, world_size=4)
+
+### Shared file-system initialization
+
+dist.init_process_group(backend, init_method='file:///mnt/nfs/sharedfile',
+                        world_size=4, rank=args.rank)
+
+## Collective functions
+
+Collective functions用于进程间通信，函数列表如下
+
+1. broadcast
+   + 方法：torch.distributed.broadcast(tensor, src, group=None, async_op=False)
+    ![alt text](</pytorch ddp/image.png>)
+   + 在src节点上将tensor广播到所有节点，所有节点的值是一样的
+   + 其它方法
+     + torch.distributed.broadcast_object_list(object_list, src=0, group=None, device=None)： 支持python对象广播
+
+2. scatter
+   + 方法： torch.distributed.scatter(tensor, scatter_list=None, src=0, group=None, async_op=False)
+   + ![alt text](</pytorch ddp/image-1.png>)
+   + 在src节点上将scatter_list中的值`依次`传到其它节点，注意与*broadcast*的不同
+   + 其它方法
+     + torch.distributed.scatter_object_list(scatter_object_output_list, scatter_object_input_list, src=0, group=None)：支持python对象
+
+3. gather
+   + 方法：torch.distributed.gather(tensor, gather_list=None, dst=0, group=None, async_op=False)
+   + ![alt text](</pytorch ddp/image-2.png>)  
+   + 在dst节点上将每个节点上tensor收集到gather_list中
+
+4. all_gather
+   + 方法：torch.distributed.all_gather(tensor_list, tensor, group=None, async_op=False)
+   + ![alt text](</pytorch ddp/image-3.png>)
+   + gather是收集所有信息到指定节点，all_gather是收集所有信息到**所有节点**
+
+5. reduce
+    + 方法：torch.distributed.reduce(tensor, dst, op=<torch.distributed.distributed_c10d.ReduceOp object>, group=None, async_op=False)
+    + ![alt text](</pytorch ddp/image-4.png>)
+    + 通过op（默认是求和）操作将信息进行归纳到dst节点，相当与数据库中group by， 其中op支持求和（sum）、最大（max）、最小(min)等
+
+6. all_reduce
+   + 方法：torch.distributed.all_reduce(tensor, op=<torch.distributed.distributed_c10d.ReduceOp object>, group=None, async_op=False)
+   + ![alt text](</pytorch ddp/image-5.png>)
+   + 通过op（默认是求和）操作将信息进行归纳到所有节点
+
+
+7. 其它方法
+    + torch.distributed.all_gather_into_tensor(output_tensor, input_tensor, group=None, async_op=False)：all_gather是放到list中，这里可以放到一个tensor中
+    + torch.distributed.all_gather_object(object_list, obj, group=None)： 支持python对象
+    + torch.distributed.gather_object(obj, object_gather_list=None, dst=0, group=None)：支持python对象
+    + torch.distributed.reduce_scatter(output, input_list, op=<torch.distributed.distributed_c10d.ReduceOp object>, group=None, async_op=False)：先归纳再scatter
+    + torch.distributed.reduce_scatter_tensor(output, input, op=<torch.distributed.distributed_c10d.ReduceOp object>, group=None, async_op=False):Reduces, then scatters a tensor to all ranks in a group.
+    + torch.distributed.all_to_all(output_tensor_list, input_tensor_list, group=None, async_op=False):Each process scatters list of input tensors to all processes in a group and return gathered list of tensors in output list.
+
+
+
 【参考文档】
 1. [[原创][深度][PyTorch] DDP入门教程](https://blog.csdn.net/YIforeveralone/article/details/109299173)
 2. [torch.utils.data.distributed.DistributedSampler](https://www.cxyzjd.com/article/searobbers_duck/115299691)
