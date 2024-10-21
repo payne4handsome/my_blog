@@ -11,24 +11,33 @@ author: pan
 2. 作者: Ranjay Krishna  Yuke Zhu  Oliver Groth  Justin Johnson Kenji Hata  Joshua Kravitz  Stephanie Chen  Yannis Kalantidis Li-Jia Li  David A. Shamma  Michael S. Bernstein  Li Fei-Fei
 3. 发表日期: 2016.2
 
-
 一、介绍
+
 1. 官网地址：https://homes.cs.washington.edu/~ranjay/visualgenome/index.html
-2. 数据统计信息：
-  - 108,077 Images
-  - 5.4 Million Region Descriptions
-  - 1.7 Million Visual Question Answers
-  - 3.8 Million Object Instances
-  - 2.8 Million Attributes
-  - 2.3 Million Relationships
-3. 来源
-  The first release of the Visual Genome dataset uses 108, 249 images from the intersection of the YFCC100M and MS-COCO. 
-4. 备注说明
+
+2. 数据统计信息
+
+- 108,077 Images
+- 5.4 Million Region Descriptions
+- 1.7 Million Visual Question Answers
+- 3.8 Million Object Instances
+- 2.8 Million Attributes
+- 2.3 Million Relationships
+
+1. 来源
+
+  The first release of the Visual Genome dataset uses 108, 249 images from the intersection of the YFCC100M and MS-COCO.
+
+
+1. 备注说明
   1. 该数据集有v1.0, v1.2, v1.4三个版本，最新的v1.4版本清洗了object标注、新增了关系等，但是下载提示403 forbidden错误，应该是没有放开权限。所以目前下载的数据集为v1.2版本。
     v1.4的官方readme
+
+
 二、VG数据集组成部分
 VG数据集的构建是从收集描述和问答开始的。目标、属性、关系来自于描述（To enable research on comprehensive understanding of images, we begin by collecting descriptions and question answers. These are raw texts without any restrictions on length or vocabulary. Next, we extract objects, attributes and relationships from our descriptions.）
-- region descriptions 
+
+- region descriptions
   -  一个简单的总结句子不足以描述所有的内容；所以可以分区域描述
   - 每个区域都有一个bounding box
   - 每张图片平均有42个bounding box和区域描述

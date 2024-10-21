@@ -1,9 +1,9 @@
 ---
 title: "PE Net"
 date: 2023-08-20T17:55:49+08:00
-draft: true
+draft: false
 categories: [paper]
-tags: []
+tags: [sgg]
 author: pan
 ---
 1. Title: Prototype-based Embedding Network for Scene Graph Generation

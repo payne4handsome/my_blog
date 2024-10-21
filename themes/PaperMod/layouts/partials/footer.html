@@ -134,8 +134,8 @@
 </script>
 <!-- <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script> -->
-<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
 
@@ -145,8 +145,20 @@
     tex: {
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
       inlineMath: [['$', '$'], ['\\(', '\\)']],
+      processEscapes: true,
+      processEnvironments: true
     },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    },
+    svg: {
+    fontCache: 'global'
+    }
   };
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
 </script>
 <script
     async
@@ -156,9 +168,10 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     type="text/javascript">
-</script> 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
--->
+</script>  -->
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"> -->
+
 
 <!-- Katex 显示markdown公式 -->
 

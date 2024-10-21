@@ -113,3 +113,35 @@ L1、L2 loss
 
 3. 初始化
 Xavier初始化每一层输出的方差应该尽量相等
+
+4. dropout 和 droppath
+
+   dropout: 随机丢弃一些神经元
+
+   droppath: 随机丢弃分支结构，使用如下
+
+   ```python
+   x = x+drop_path(net(x))
+   ```
+
+   非
+
+   ```python
+   x = drop_path(net(x))
+   ```
+
+    drop_path实现代码如下：
+
+    ```python
+    def drop_path(x, drop_prob: float = 0., training: bool = False):
+    if drop_prob == 0. or not training:
+        return x
+    keep_prob = 1 - drop_prob
+    shape = (x.shape[0],) + (1,) * (x.ndim - 1)  # work with diff dim tensors, not just 2D ConvNets
+    random_tensor = keep_prob + torch.rand(shape, dtype=x.dtype, device=x.device)
+    random_tensor.floor_()  # binarize
+    output = x.div(keep_prob) * random_tensor
+    return output
+    ```
+
+    输入是（B,C,H,W）,droppath会随机将某一个样本全部变为0
