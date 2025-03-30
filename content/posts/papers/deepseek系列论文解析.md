@@ -20,6 +20,7 @@ author: pan
   - DeepSeek-R1：为了解决DeepSeek-R1-Zero的缺点和进一步提升推理能力，训练了DeepSeek-R1，其在强化学习之前包含了multi-stage training and cold-start data。
 在推理任务上，DeepSeek-R1取得了和openai-o1 comparable的结果。DeepSeek-AI开源了DeepSeek-R1-Zero 、 DeepSeek-R1以及6个蒸馏得到的小模型(1.5B, 7B, 8B, 14B, 32B, 70B)。
 
-关于这4篇论文详细的演变过程，见下表。DeepSeek V2、V3、R1三篇论文详细的阅读笔记见我的飞书文档[deepseek系列论文解析](https://nw821o5xhc.feishu.cn/wiki/PGSRwWYWaieVDkkXksac4yoXnxd)。
+关于这4篇论文详细的演变过程，见下表。DeepSeek V2、V3、R1三篇论文详细的阅读笔记见我的飞书文档
+**[deepseek系列论文解析](https://nw821o5xhc.feishu.cn/wiki/PGSRwWYWaieVDkkXksac4yoXnxd)** 。
 
 ![DeepSeek系列概览](/deepseek系列论文解析/Xnip2025-03-23_23-57-05.jpg)
