@@ -111,6 +111,8 @@ L1、L2 loss
 
     Group Normalization:在（C/a, H，W）维度上做均值和方差的计算(C/a表示在channel上分组)，均值和方差的输出维度为 (N, C/a)
 
+    RMS Normalization:
+
 3. 初始化
 Xavier初始化每一层输出的方差应该尽量相等
 
