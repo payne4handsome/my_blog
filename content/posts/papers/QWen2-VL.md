@@ -20,6 +20,6 @@ Qwen-VL升级版本，QWen-VL介绍见：[QWen-VL](https://nw821o5xhc.feishu.cn/
 
 ## Method
 
-xunl方法与QWen-VL一致，三阶段。主要的创新点就是引入了NaViT的可以动态处理不同分辨率、长宽比的图片还是多模的旋转位置编码（M-RoPE）. 其它方面透露的信息不多。
+训练方法与QWen-VL一致，三阶段。主要的创新点就是引入了NaViT的可以动态处理不同分辨率、长宽比的图片还是多模的旋转位置编码（M-RoPE）. 其它方面透露的信息不多。
 
 ### Experiments

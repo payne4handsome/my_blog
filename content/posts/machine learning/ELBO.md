@@ -19,6 +19,8 @@ $$\delta J = J[g(x)+m\eta(x)]-J(g(x))$$
 
 变分推断：用一个简单分布区近似一个复杂分布，求解推断(inference)问题的方法的统称。
 
+变分贝叶斯方法：通过将复杂的后验分布用一个更简单的分布来近似，并通过优化让它们尽可能接近。
+
 # preliminary
 
 当给定一些观测数据x时，我们希望获得x的真实分布p(x)。但是p(x)是一个非常复杂的分布，我们很难直接获得或者优化。所以对于复杂问题，我们通常采用化烦为简的思路求解。p(x)难求解，我们就用简单的分别去拟合。即可以引入一些简单分布， 将p(x)转化为如下形式去求解。
@@ -50,7 +52,7 @@ $$
 2. p(x|z)我们同样不知道。
 
 对于问题2，容易解决，因为我们有神经网络啊，我们用参数为$\theta$的神经网络去估计p(x|z), 记为$p_\theta(x|z)$, 但是积分如何解决呢？
-公式1中是对整个隐空间进行积分，**搜索空间太大**，而且我们不需要对个隐空间进行积分。因为我们对z不是一无所知。**因为给定样本x，我们是可以获取一些z的信息的**，即可以用$q_i(z)$去估计$p(z|x_i)$,但是对每一个观测数据都对应一个$q_i(z)$需要大量的参数（there is an obvious drawback behind this intuition. The number of parameters of qi(z) will scale up with the size of the set of observations because we build individual distribution after observing each data, 参考：[ELBO](https://yunfanj.com/blog/2021/01/11/ELBO.html)）。所以再次引入神经网络$q_\phi(z|x)\simeq q_i(z) \forall x_i \in X$。$q_i(z)$的真实分布为$p(z|x)$。
+公式1中是对整个隐空间进行积分，**搜索空间太大**，而且我们还需要对个隐空间进行积分。因为我们对z不是一无所知。**因为给定样本x，我们是可以获取一些z的信息的**，即可以用$q_i(z)$去估计$p(z|x_i)$,但是对每一个观测数据都对应一个$q_i(z)$需要大量的参数（there is an obvious drawback behind this intuition. The number of parameters of qi(z) will scale up with the size of the set of observations because we build individual distribution after observing each data, 参考：[ELBO](https://yunfanj.com/blog/2021/01/11/ELBO.html)）。所以再次引入神经网络$q_\phi(z|x)\simeq q_i(z) \forall x_i \in X$。$q_i(z)$的真实分布为$p(z|x)$。
 
 # ELBO（evidence lower bound, aka. variational lower bound）
 

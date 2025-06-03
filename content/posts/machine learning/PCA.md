@@ -1,6 +1,6 @@
 ---
 title: "PCA"
-date: 2023-12-10T14:51:51+08:00
+date: 2022-12-10T14:51:51+08:00
 draft: false
 categories: []
 tags: [PCA]
