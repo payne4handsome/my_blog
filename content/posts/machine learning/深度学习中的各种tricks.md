@@ -105,11 +105,13 @@ L1、L2 loss
 
     BatchNorm：在（N，H，W）维度上做均值和方差的计算，均值和方差的输出维度为 (C)
 
-    Layer Normalization:在（C，H，W）维度上做均值和方差的计算，均值和方差的输出维度为 (N)
+    Layer Normalization:在（C，H，W）维度上做均值和方差的计算，均值和方差的输出维度为 (N)；对于NLP，输入维度是（N,L,H）, Layer Normalization在H维度上做均值和方差的计算，输出维度（N,L）
 
-    Instance Normalization:在（H，W）维度上做均值和方差的计算，均值和方差的输出维度为 (N, C)
+    Instance Normalization:在（H，W）维度上做均值和方差的计算，均值和方差的输出维度为 (N, C)；对于NLP，输入维度是（N,L,H）, Layer Normalization在L维度上做均值和方差的计算，输出维度（N,H）
 
     Group Normalization:在（C/a, H，W）维度上做均值和方差的计算(C/a表示在channel上分组)，均值和方差的输出维度为 (N, C/a)
+
+    RMS Normalization: 在Layer Normalization基础上改进，省去了平移，只计算方差。
 
 3. 初始化
 Xavier初始化每一层输出的方差应该尽量相等
