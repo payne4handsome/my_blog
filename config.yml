@@ -41,6 +41,9 @@ languages:
                 - name: Posts
                   url: posts/
                   weight: 5
+                - name: Tech News
+                  url: tech-news/
+                  weight: 8
                 - name: Search
                   url: search/
                   weight: 10
